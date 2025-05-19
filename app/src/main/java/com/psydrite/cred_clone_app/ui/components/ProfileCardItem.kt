@@ -91,17 +91,6 @@ fun ProfileCardItem(icon: Int, text1: String, additionalText: String? = null, am
                     contentDescription = "Go to"
                 )
                 Spacer(Modifier.width(13.dp))
-//            IconButton(
-//                modifier = Modifier,
-//                onClick = {
-//                    //button logic
-//                }
-//            ) {
-//                Icon(
-//                    imageVector = Icons.Default.ArrowForward,
-//                    contentDescription = "Go to"
-//                )
-//            }
             }
         }
     }
