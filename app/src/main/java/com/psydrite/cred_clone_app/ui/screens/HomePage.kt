@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import com.psydrite.cred_clone_app.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,8 +16,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -35,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,9 +46,11 @@ import coil.compose.AsyncImage
 import com.psydrite.cred_clone_app.ui.components.CustomDivider
 import com.psydrite.cred_clone_app.ui.components.GarageCard
 import com.psydrite.cred_clone_app.ui.components.ProfileCardItem
+import com.psydrite.cred_clone_app.ui.components.RewardCardItem
 
 @Composable
 fun HomePage(){
+    val scrollState = rememberScrollState()
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -53,6 +59,7 @@ fun HomePage(){
         Column (
             modifier = Modifier.fillMaxSize()
                 .padding(top = 50.dp)
+                .verticalScroll(rememberScrollState())
         ){
             Column(
                 modifier = Modifier
@@ -62,7 +69,6 @@ fun HomePage(){
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(end = 16.dp)
                 ) {
                     //top row
                     Row (
@@ -114,6 +120,7 @@ fun HomePage(){
                                     style = MaterialTheme.typography.titleSmall
                                 )
                             }
+                            Spacer(Modifier.width(16.dp))
                         }
                     }
 
@@ -180,6 +187,7 @@ fun HomePage(){
                                     contentScale = ContentScale.FillBounds
                                 )
                             }
+                            Spacer(Modifier.width(16.dp))
                         }
                     }
 
@@ -203,11 +211,44 @@ fun HomePage(){
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.Blue)
+                    .background(MaterialTheme.colorScheme.background)
             ){
-                Text("your rewards and benefits")
-            }
+                Column (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ){
+                    Text(
+                        "YOUR REWARDS & BENEFITS",
+                        modifier = Modifier
+                            .padding(vertical = 24.dp)
+                            .padding(start = 16.dp),
+                        letterSpacing = 2.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onBackground.copy(0.3f))
 
+                    RewardCardItem("Cashback Balance", "Rs 0")
+                    CustomDivider()
+                    RewardCardItem("Coins", "26,46,583")
+                    CustomDivider()
+                    RewardCardItem("Win upto Rs 1000", "refer and earn")
+
+                    Spacer(Modifier.height(40.dp))
+
+                    Text(
+                        "TRANSACTIONS & SUPPORT",
+                        modifier = Modifier
+                            .padding(vertical = 24.dp)
+                            .padding(start = 16.dp),
+                        letterSpacing = 2.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onBackground.copy(0.3f))
+                    RewardCardItem("All transactions", "xyz")
+                    CustomDivider()
+                    RewardCardItem("xyz", "xyz")
+
+                    Spacer(Modifier.height(100.dp))
+                }
+            }
         }
     }
 }

@@ -12,7 +12,6 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CustomDivider(){
-    Spacer(Modifier.height(8.dp))
     Row (
         modifier = Modifier
             .padding(start = 16.dp)
@@ -21,5 +20,4 @@ fun CustomDivider(){
             color = MaterialTheme.colorScheme.onBackground.copy(0.1f)
         )
     }
-    Spacer(Modifier.height(8.dp))
 }
