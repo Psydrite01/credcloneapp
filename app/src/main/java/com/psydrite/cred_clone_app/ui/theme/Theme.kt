@@ -9,12 +9,18 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
     secondary = PurpleGrey80,
-    tertiary = Pink80
+    tertiary = Pink80,
+
+    background = Color(0xff0d0d0d),
+    onBackground = Color.White,
+    surface = Color(0xff161616),
+    onSurface = Color.White,
+    primary = Color(0xff25bf75)
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -51,7 +57,7 @@ fun CredcloneappTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = DarkColorScheme,  //designing the UI only for dark theme
         typography = Typography,
         content = content
     )
